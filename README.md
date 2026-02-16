@@ -1,73 +1,160 @@
-# React + TypeScript + Vite
+# 🏬 Retail Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + TypeScript + Vite** based **internal Retail Management System** powered by **Supabase** as the backend.
 
-Currently, two official plugins are available:
+This system is **NOT customer-facing**. It is designed strictly for **internal business operations**, providing **full administrative control** and **employee-level access** for managing products and day-to-day retail workflows.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔐 Authentication & Authorization
 
-## Expanding the ESLint configuration
+* Secure authentication using **Supabase Auth**
+* Role-based access control (RBAC)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  * **Admin**: Full system access
+  * **Employee**: Limited operational access
+* Protected routes using custom auth guards
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 👨‍💼 Admin Capabilities
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Admin registration & login
+* Full control over:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  * Products
+  * Employees
+  * System access
+* Dashboard with role-based views
+
+### 👷 Employee Capabilities
+
+* Secure login
+* Access only to assigned dashboards
+* View and manage products based on permissions
+
+### 📦 Product Management (CRUD)
+
+* Create, read, update, and delete products
+* Product filtering and grid views
+* Modal-based product creation & editing
+
+### ⚡ Modern Frontend Stack
+
+* **React 18**
+* **TypeScript** (type-safe and scalable)
+* **Vite** for fast development & builds
+* Modular component architecture
+
+---
+
+## 🧱 Tech Stack
+
+### Frontend
+
+* React + TypeScript
+* Vite
+* ESLint
+
+### Backend
+
+* Supabase
+
+  * Authentication
+  * Database
+  * Role-based access policies
+
+---
+
+## 📁 Project Structure
+
+```txt
+src/
+├── auth/                 # Login, Signup & Route Protection
+├── components/           # Shared UI components
+│   ├── products/         # Product-related components
+│   └── ui/               # Reusable UI elements
+├── dashboards/           # Admin & Employee dashboards
+├── hooks/                # Custom React hooks
+├── lib/                  # Supabase & business logic
+├── assets/               # Static assets
+└── main.tsx              # App entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔒 Environment Variables
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Create a `.env` file in the root directory:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
+
+⚠️ **Never commit your `.env` file to GitHub**
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 2️⃣ Run development server
+
+```bash
+npm run dev
+```
+
+The app will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🛡️ Security Notes
+
+* Supabase Row Level Security (RLS) is used
+* Role-based access enforced both frontend & backend
+* Sensitive data is protected via environment variables
+
+---
+
+## 📌 Intended Use
+
+This system is built for:
+
+* Retail shop owners
+* Store managers
+* Internal staff
+
+❌ **Not intended for customers or public use**
+
+---
+
+## 🧭 Future Improvements
+
+* Employee management (create/update roles)
+* Sales & transaction tracking
+* Reports & analytics dashboard
+* Audit logs
+
+---
+
+## 👨‍💻 Author
+
+**Zakaria Ikar**
+Computer Science Undergraduate
+Self-taught Full Stack Developer
+
+---
+
+## 📜 License
+
+This project is private and intended for internal or educational use only.
